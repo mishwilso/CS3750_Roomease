@@ -22,7 +22,8 @@ struct ContentView: View {
 
 struct ContentView_Provider: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavStackView()
+        
     }
 }
 
@@ -33,7 +34,7 @@ let lighterGray = Color(red: 0.9, green: 0.9, blue: 0.9)
 
 let bttnColor = "red: 0.8, green: 0.8, blue: 0.8"
 
-let textColor = "red: 0, green: 0, blue: 0"
+let textColor = Color(red: 0, green: 0, blue: 0)
 
 let white = Color(red: 1, green: 1, blue: 1)
 
@@ -92,85 +93,66 @@ struct NavStackView: View {
     @State private var password = ""
     @State private var firstName = ""
     @State private var lastName = ""
+    @State private var isLinkActive = false
     var body: some View {
         NavigationStack {
-            VStack(spacing: 50){
-                NavigationLink(destination: CreateAccountView(firstName: $firstName, lastName: $lastName, username: $username, password: $password),
-                    label: { Text("Create Account").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lightGray))})
-                Spacer().frame(height: 1.0)
-                NavigationLink(destination: LoginView(username: $username, password: $password),
-                               label: { Text("Login").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lightGray))})
+            ZStack (alignment: .center) {
+                ZStack {
+                    
+                    Rectangle()
+                        .frame(width: 308, height: 215).cornerRadius(15.0)
+                        .foregroundColor(lightGray)
+                        .padding(.top, 500)
+                    
+                    Ellipse()
+                        .frame(width: 458, height: 500)
+                        .padding(.trailing, -450)
+                        .foregroundColor(lighterGray)
+                        .padding(.top, -370)
+                    
+                    Ellipse()
+                        .frame(width: 510, height: 400)
+                        .padding(.leading, -100)
+                        .foregroundColor(lighterGray)
+                        .padding(.top, -500)
+                    
+                    
+                    
+                    Text("Welcome to\nRoommease!")
+                        .foregroundColor(.white)
+                        .font(.system(size: 35))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 50).padding(.top, -300)
+                    
+                }
+                VStack(spacing: 80) {
+                  
+                    
+                    //Image(.tempLogo).resizable().aspectRatio(contentMode: .fit).padding(.top, 1).padding()
+                    
+                    
+                    VStack(spacing: 30){
+                        
+                        
+                        Spacer().frame(height: 470)
+                        
+                        NavigationLink(destination: CreateAccountView(),
+                                       label: { Text("Create Account").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lighterGray))})
+                        
+                        NavigationLink(destination: LoginView(),
+                                       label: {     Text("Login").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lighterGray))})
+                        
+                    }
+                }.padding(.top, 0)
             }
 
         }
     }
 }
 
-struct LoginView: View {
 
-    @Binding var username: String
-    @Binding var password: String
-    @State var household = ""
-
-
-    var body: some View {
-        VStack(spacing: 120) {
-            Text("Log-In").font(.headerFont).multilineTextAlignment(.leading)//.navigationBarTitle("Create Account Screen") displayMode: .inline)
-
-            VStack(alignment: .leading, spacing: 30.0) {
-                
-                Text("Username").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $username).font(.regularFont);
-
-                Text("Password").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $password).font(.regularFont);
-
-                NavigationLink(destination: JoinHouseView(), label: { Text("Log-In").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lightGray))})
-            }
-            .padding(.horizontal, 60.0)
-
-            //For actual program:
-//.navigationBarBackButtonHidden(true)
-        }
-    }
-}
-
-
-struct CreateAccountView: View {
-    @Binding var firstName: String
-    @Binding var lastName: String
-    @Binding var username: String
-    @Binding var password: String
-    @State var household = ""
-
-
-    var body: some View {
-        VStack(spacing: 120) {
-            Text("Create Account").font(.headerFont).multilineTextAlignment(.leading)//.navigationBarTitle("Create Account Screen") displayMode: .inline)
-
-            VStack(alignment: .leading, spacing: 30.0) {
-                
-                Text("First Name").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $firstName).font(.regularFont);
-                
-                Text("Last Name").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $lastName).font(.regularFont);
-                
-                Text("Username").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $username).font(.regularFont);
-
-                Text("Password").font(.smallFont)
-                    .multilineTextAlignment(.leading); TextField("", text: $password).font(.regularFont);
-
-                NavigationLink(destination: JoinHouseView(), label: { Text("Create Account").font(.smallFont).frame(width: 250.0, height: 60).background(RoundedRectangle(cornerRadius: 7).fill(lightGray))})
-            }
-            .padding(.horizontal, 60.0)
-
-            //For actual program:
-//.navigationBarBackButtonHidden(true)
-        }
-    }
-}
 
 struct JoinHouseView: View{
     @State var householdcode = ""
@@ -214,95 +196,284 @@ struct JoinHouseView: View{
 
 
 
+struct LoginFormView: View {
+    @Binding var username: String
+    @Binding var password: String
 
-//Stuff I wanted to test but my preview broke.
+    var body: some View {
+        ZStack (alignment: .center) {
+            ZStack {
+                
+                Rectangle()
+                    .frame(width: 458, height: 420)
+                    .foregroundColor(lightGray)
+                    .padding(.top, 1100)
+                
+                Ellipse()
+                    .frame(width: 458, height: 420)
+                    .padding(.trailing, -500)
+                    .foregroundColor(lighterGray)
+                    .padding(.top, -550)
+                
+                Ellipse()
+                    .frame(width: 510, height: 478)
+                    .padding(.leading, -200)
+                    .foregroundColor(lightGray)
+                    .padding(.top, -590)
+                
+                Text("Welcome \nBack")
+                    .foregroundColor(.white)
+                    .font(.system(size: 35))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 50).padding(.top, -250)
+                
+            }
+                                
+                
+                
+                
+                VStack (spacing: 40){
+                    //Add decor stuff in a ZStack Here
+                    
+                    VStack (spacing: 40){
+                        
+                        VStack (spacing: 30) {
+                            CustomTextField(placeHolder: "Username", bColor: textColor, tOpacity: 0.6, value: $username)
+                            
+                            CustomTextField(placeHolder: "Password", bColor: textColor, tOpacity: 0.6, value: $password)
+                            
+                        }.padding(.horizontal, 50)
+                        
+                        //Insert stuff for "Don't have an account", here
+                        
+                    }
+                    
+                }
+            
+            HStack{
+                Text("Don't Have An Account? ").fontWeight(.bold).foregroundColor(.white)
+                
+                NavigationLink(destination: CreateAccountView(), label: {Text("Sign Up").foregroundColor(.gray)})
+            }.padding(.top, 750)
+            
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            
 
-//struct LoginView: View {
-//
-//    @State private var username: String = ""
-//    @State private var password: String = ""
-//    @State private var isLinkActive = false
-//
-//    var body: some View {
-//        NavigationView {
-//            ZStack (alignment: .topLeading) {
-//                VStack {
-//                    VStack (spacing: 40){
-//                        //Add decor stuff in a ZStack Here
-//
-//                        VStack (spacing: 30){
-//                            VStack (spacing: 30) {
-//                                CustomTextField(placeHolder: "Username", bColor: "textColor", tOpacity: 0.6, value: $username)
-//
-//                                CustomTextField(placeHolder: "Password", bColor: textColor, tOpacity: 0.6, value: $password)
-//                            }
-//
-//                            //Sign in button
-//                            NavigationLink(destination: ContentView(), isActive: $isLinkActive){
-//                                Button(action: {self.isLinkActive=true}, label: {
-//                                CustomButton(bttnTitle: "Sign In", bColor: bttnColor)
-//                                })
-//                            }
-//
-//                        }.padding(.horizontal, 20)
-//                    }
-//                }
-//            }
-//            .edgesIgnoringSafeArea(.bottom)
-//        }
-//        //.navigationBarHidden(true)
-//    }
-//}
-//
-//
-//
-//
-////Custom Text Field Things
-//struct CustomTextField: View {
-//
-//    var placeHolder: String
-//    var bColor: String
-//    var tOpacity: Double
-//    @Binding var value: String
-//
-//    var body: some View {
-//        HStack {
-//        //Maybe add image thing
-//
-//            if placeHolder == "Password" {
-//                ZStack {
-//                    if value.isEmpty {
-//                        Text(placeHolder).foregroundColor(Color(bColor).opacity(tOpacity)).padding(.leading, 12).font(.regularFont)
-//                    }
-//
-//                    SecureField("", text: $value).padding(.leading, 12).font(.regularFont).frame(height: 45)
-//                }
-//            }
-//
-//            else {
-//                ZStack {
-//                    if value.isEmpty {
-//                        Text(placeHolder).foregroundColor(Color(bColor).opacity(tOpacity)).padding(.leading, 12).font(.regularFont)
-//                    }
-//
-//                    TextField("", text: $value).padding(.leading, 12).font(.regularFont).frame(height: 45).foregroundColor(Color(bColor))
-//                }
-//            }
-//        }
-//        .overlay(
-//            Divider().overlay(Color(bColor).opacity(tOpacity)).padding(.horizontal, 20), alignment: .bottom
-//        )
-//    }
-//}
-//
-////Custom Button
-//struct CustomButton: View {
-//
-//    var bttnTitle: String
-//    var bColor: String
-//
-//    var body: some View {
-//        Text(bttnTitle).fontWeight(.bold).foregroundColor(.white).frame(height: 58).frame(minWidth: 0, maxWidth: .infinity).background(Color(bColor))
-//    }
-//}
+        }
+
+    }
+  
+
+
+struct LoginView: View {
+
+    @State var username = ""
+    @State var password = ""
+    @State var leavePage = false
+    @State var errorCode = ""
+    //@State var isLinkActive = ""
+
+    var body: some View {
+        NavigationView {
+            
+            ZStack (alignment: .center){
+                LoginFormView(username: $username, password: $password)
+                
+                //Sign in button
+                
+                if(username.isEmpty || password.isEmpty){
+                    VStack{
+                        Text(errorCode).foregroundColor(.red)
+                        Button(action: { errorCode = "Please Enter valid Password and Username"}, label: {
+                            CustomButton(bttnTitle: "Sign In", bColor: bttnColor)
+                        })
+                    }.padding(.top, 300)
+                } else {
+                    
+                    NavigationLink(destination: ContentView(), label: {CustomButton(bttnTitle: "Sign In", bColor: bttnColor)}).padding(.top, 300)
+                }
+            }
+            
+        }
+        .navigationBarHidden(true)
+    }
+}
+
+struct CreateAccountFormView: View {
+    @Binding var firstName: String
+    @Binding var lastName: String
+    @Binding var username: String
+    @Binding var password: String
+    
+    var body: some View {
+        ZStack (alignment: .center) {
+            ZStack {
+                
+                Rectangle()
+                    .frame(width: 458, height: 420)
+                    .foregroundColor(lightGray)
+                    .padding(.top, 1100)
+                
+                Ellipse()
+                    .frame(width: 458, height: 420)
+                    .padding(.trailing, -500)
+                    .foregroundColor(lighterGray)
+                    .padding(.top, -620)
+                
+                Ellipse()
+                    .frame(width: 510, height: 478)
+                    .padding(.leading, -100)
+                    .foregroundColor(lightGray)
+                    .padding(.top, -650)
+                
+                
+                
+                Text("Create \nAccount")
+                    .foregroundColor(.white)
+                    .font(.system(size: 35))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 70).padding(.top, -300)
+                
+            }
+            
+            
+            VStack (spacing: 40){
+                //Add decor stuff in a ZStack Here
+                
+                VStack (spacing: 40){
+                    
+                    VStack (spacing: 30) {
+                        CustomTextField(placeHolder: "First Name", bColor: textColor, tOpacity: 0.6, value: $firstName)
+                        
+                        CustomTextField(placeHolder: "Last Name", bColor: textColor, tOpacity: 0.6, value: $lastName)
+                        
+                        CustomTextField(placeHolder: "Username", bColor: textColor, tOpacity: 0.6, value: $username)
+                        
+                        CustomTextField(placeHolder: "Password", bColor: textColor, tOpacity: 0.6, value: $password)
+                        
+                    }.padding(.horizontal, 50)
+                    
+                    //Insert stuff for "Don't have an account", here
+                    
+                }
+                
+            }
+            
+            HStack{
+                Text("Have An Account? ").fontWeight(.bold).foregroundColor(.white)
+                
+                NavigationLink(destination: LoginView(), label: {Text("Log-In").foregroundColor(.gray)})
+            }.padding(.top, 750)
+            
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        
+        
+    }
+    
+}
+
+struct CreateAccountView: View {
+
+    @State var firstName = ""
+    @State var lastName = ""
+    @State var username = ""
+    @State var password = ""
+    @State var errorCode = ""
+
+    var body: some View {
+        NavigationView {
+            
+            ZStack (alignment: .center){
+                CreateAccountFormView(firstName: $firstName, lastName: $lastName, username: $username, password: $password)
+                
+                //Sign in button
+                if(username.isEmpty || password.isEmpty || firstName.isEmpty || lastName.isEmpty){
+                    VStack{
+                        Text(errorCode).foregroundColor(.red)
+                        Button(action: { errorCode = "Please Enter valid Credentials"}, label: {
+                            CustomButton(bttnTitle: "Create Account", bColor: bttnColor)
+                        })
+                    }.padding(.top, 400)
+                } else {
+                    
+                    NavigationLink(destination: JoinView(name: User(fname: firstName, lname: lastName)), label: {CustomButton(bttnTitle: "Create Account", bColor: bttnColor)}).padding(.top, 400)
+                }
+            }
+            
+        }
+        .navigationBarHidden(true)
+    }
+}
+
+//Set This up Properly
+struct User{
+    var fname: String
+    var lname: String
+}
+
+//Recreate Join and Create House View
+struct JoinView: View {
+    let name: User
+    
+    var body: some View{
+        Text("Hi \(name.fname) \(name.lname)")
+    }
+}
+
+
+
+//Custom Text Field Things
+struct CustomTextField: View {
+
+    var placeHolder: String
+    var bColor: Color
+    var tOpacity: Double
+    @Binding var value: String
+
+    var body: some View {
+        HStack {
+        //Maybe add image thing
+
+            if placeHolder == "Password" {
+                ZStack {
+                    if value.isEmpty {
+                        Text(placeHolder).foregroundColor(lightGray.opacity(tOpacity)).padding(.trailing, 220).font(.regularFont)
+                    }
+
+                    SecureField("", text: $value).padding(.leading, 12).font(.regularFont).frame(height: 45).autocorrectionDisabled(true).autocapitalization(.none)
+                }
+            }
+
+            else {
+                ZStack {
+                    if value.isEmpty {
+                        Text(placeHolder).foregroundColor(lightGray.opacity(tOpacity)).padding(.trailing, 220).font(.regularFont)
+                    }
+
+                    TextField("", text: $value).padding(.leading, 12).font(.regularFont).frame(height: 45).autocorrectionDisabled(true).autocapitalization(.none)
+                }
+            }
+        }
+        .overlay(
+            Divider().overlay(bColor.opacity(tOpacity)).padding(.horizontal, 20), alignment: .bottom
+        )
+    }
+}
+
+//Custom Button
+struct CustomButton: View {
+
+    var bttnTitle: String
+    var bColor: String
+
+    var body: some View {
+        Text(bttnTitle).fontWeight(.bold).foregroundColor(.white).frame(height: 58).frame(minWidth: 0, maxWidth: 300).background(lightGray).cornerRadius(20.0)
+    }
+}
 
