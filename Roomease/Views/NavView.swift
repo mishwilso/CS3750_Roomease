@@ -12,21 +12,10 @@ import SwiftUI
 struct ScreenOneView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: "exclamationmark.triangle")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Screen One!")
-            
-        }
-    }
-}
-struct ScreenTwoView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Screen Two!")
+            Text("Working Progress Page!\nMore Coming Soon")
             
         }
     }
@@ -38,13 +27,24 @@ struct NavView: View {
             TabView {
                 ScreenOneView()
                     .tabItem {
-                        //Image(systemName: "phone.fill")
-                        Text("One")
+                        Label("Home", systemImage: "house")
+                        
                     }
                 CalendarView()
                     .tabItem {
-                        //Image(systemName: "tv.fill")
-                        Text("Calender")
+                        Label("Calendar", systemImage: "calendar")
+                    }
+                ScreenOneView()
+                    .tabItem {
+                        Label("Chores", systemImage: "list.dash")
+                    }
+                ScreenOneView()
+                    .tabItem {
+                        Label("Grocery", systemImage: "cart")
+                    }
+                ScreenOneView()
+                    .tabItem {
+                        Label("Messages", systemImage: "paperplane")
                     }
             }.onAppear() {
                 UITabBar.appearance().barTintColor = UIColor(lightGray)
