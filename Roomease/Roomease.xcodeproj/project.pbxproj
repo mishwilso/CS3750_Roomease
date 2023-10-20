@@ -1,0 +1,835 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A0AA67C2ADE147A00F2656D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0AA67B2ADE147A00F2656D /* ContentView.swift */; };
+		4A0AA67E2ADE147C00F2656D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0AA67D2ADE147C00F2656D /* Assets.xcassets */; };
+		4A0AA6822ADE147C00F2656D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0AA6812ADE147C00F2656D /* Preview Assets.xcassets */; };
+		4A43631C2AE18AE300C96DDE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A43631B2AE18AE300C96DDE /* GoogleService-Info.plist */; };
+		4A5F50972AE0CBA000EF4820 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5F50962AE0CBA000EF4820 /* FirebaseAnalytics */; };
+		4A5F50992AE0CBA000EF4820 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5F50982AE0CBA000EF4820 /* FirebaseAuth */; };
+		4A5F509B2AE0CBA000EF4820 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5F509A2AE0CBA000EF4820 /* FirebaseDatabase */; };
+		4A5F509D2AE0CBA000EF4820 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5F509C2AE0CBA000EF4820 /* FirebaseDatabaseSwift */; };
+		4A91F43E2AE2E6060073D0B5 /* GroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F43B2AE2E6060073D0B5 /* GroceryView.swift */; };
+		4A91F43F2AE2E6060073D0B5 /* AddGroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F43C2AE2E6060073D0B5 /* AddGroceryView.swift */; };
+		4A91F4402AE2E6060073D0B5 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F43D2AE2E6060073D0B5 /* Grocery.swift */; };
+		4A91F4472AE2E60B0073D0B5 /* AddChoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F4422AE2E60B0073D0B5 /* AddChoreView.swift */; };
+		4A91F4482AE2E60B0073D0B5 /* ChoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F4432AE2E60B0073D0B5 /* ChoreView.swift */; };
+		4A91F4492AE2E60B0073D0B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F4442AE2E60B0073D0B5 /* Room.swift */; };
+		4A91F44A2AE2E60B0073D0B5 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F4452AE2E60B0073D0B5 /* Chore.swift */; };
+		4A91F44B2AE2E60B0073D0B5 /* RoomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A91F4462AE2E60B0073D0B5 /* RoomDetailView.swift */; };
+		4AA0E1992AE171150019246B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572EA2AE0C45500EDAFE6 /* AuthService.swift */; };
+		4AA0E19B2AE1791E0019246B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA0E19A2AE1791E0019246B /* FirebaseFirestore */; };
+		4AA0E19D2AE1791E0019246B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA0E19C2AE1791E0019246B /* FirebaseFirestoreSwift */; };
+		4AA0E19F2AE1791E0019246B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4AA0E19E2AE1791E0019246B /* FirebaseStorage */; };
+		4AA0E1A72AE17E490019246B /* MonthWeekTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0E1A62AE17E490019246B /* MonthWeekTabView.swift */; };
+		4AE572C22AE0BB0A00EDAFE6 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572C12AE0BB0A00EDAFE6 /* LogInView.swift */; };
+		4AE572C42AE0BB6B00EDAFE6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572C32AE0BB6B00EDAFE6 /* RegisterView.swift */; };
+		4AE572C82AE0BC0F00EDAFE6 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572C72AE0BC0F00EDAFE6 /* JoinView.swift */; };
+		4AE572CB2AE0BD3D00EDAFE6 /* SignInUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572CA2AE0BD3D00EDAFE6 /* SignInUpView.swift */; };
+		4AE572CD2AE0BD9B00EDAFE6 /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572CC2AE0BD9B00EDAFE6 /* FontView.swift */; };
+		4AE572CF2AE0BE3C00EDAFE6 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572CE2AE0BE3C00EDAFE6 /* NavView.swift */; };
+		4AE572D22AE0BF5300EDAFE6 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572C52AE0BBA500EDAFE6 /* CustomViews.swift */; };
+		4AE572D42AE0BF8500EDAFE6 /* RoomeaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572D32AE0BF8500EDAFE6 /* RoomeaseApp.swift */; };
+		4AE572F12AE0C4B100EDAFE6 /* FormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572EE2AE0C4B100EDAFE6 /* FormattedDate.swift */; };
+		4AE572F22AE0C4B100EDAFE6 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572EF2AE0C4B100EDAFE6 /* MonthView.swift */; };
+		4AE572F32AE0C4B100EDAFE6 /* DatePickerCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572F02AE0C4B100EDAFE6 /* DatePickerCalendar.swift */; };
+		4AE572F82AE0C4C100EDAFE6 /* WeekValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572F52AE0C4C100EDAFE6 /* WeekValue.swift */; };
+		4AE572F92AE0C4C100EDAFE6 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572F62AE0C4C100EDAFE6 /* Week.swift */; };
+		4AE572FA2AE0C4C100EDAFE6 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572F72AE0C4C100EDAFE6 /* WeekView.swift */; };
+		4AE572FC2AE0C4CD00EDAFE6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572FB2AE0C4CD00EDAFE6 /* CalendarView.swift */; };
+		4AE572FE2AE0C58E00EDAFE6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572FD2AE0C58E00EDAFE6 /* RegistrationViewModel.swift */; };
+		4AE573002AE0C59E00EDAFE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE572FF2AE0C59E00EDAFE6 /* LoginViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A0AA6882ADE147C00F2656D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A0AA66E2ADE147900F2656D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A0AA6752ADE147A00F2656D;
+			remoteInfo = Test;
+		};
+		4A0AA6922ADE147C00F2656D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A0AA66E2ADE147900F2656D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A0AA6752ADE147A00F2656D;
+			remoteInfo = Test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4A0AA6762ADE147A00F2656D /* Roomease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomease.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0AA67B2ADE147A00F2656D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4A0AA67D2ADE147C00F2656D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A0AA67F2ADE147C00F2656D /* Roomease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roomease.entitlements; sourceTree = "<group>"; };
+		4A0AA6812ADE147C00F2656D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A0AA6872ADE147C00F2656D /* RoomeaseRoomeases.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomeaseRoomeases.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0AA6912ADE147C00F2656D /* RoomeaseUIRoomeases.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomeaseUIRoomeases.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A43631B2AE18AE300C96DDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Services/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A91F43B2AE2E6060073D0B5 /* GroceryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryView.swift; sourceTree = "<group>"; };
+		4A91F43C2AE2E6060073D0B5 /* AddGroceryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroceryView.swift; sourceTree = "<group>"; };
+		4A91F43D2AE2E6060073D0B5 /* Grocery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
+		4A91F4422AE2E60B0073D0B5 /* AddChoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChoreView.swift; sourceTree = "<group>"; };
+		4A91F4432AE2E60B0073D0B5 /* ChoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreView.swift; sourceTree = "<group>"; };
+		4A91F4442AE2E60B0073D0B5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		4A91F4452AE2E60B0073D0B5 /* Chore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
+		4A91F4462AE2E60B0073D0B5 /* RoomDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailView.swift; sourceTree = "<group>"; };
+		4AA0E1A62AE17E490019246B /* MonthWeekTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWeekTabView.swift; sourceTree = "<group>"; };
+		4AE572C12AE0BB0A00EDAFE6 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		4AE572C32AE0BB6B00EDAFE6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		4AE572C52AE0BBA500EDAFE6 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		4AE572C72AE0BC0F00EDAFE6 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		4AE572CA2AE0BD3D00EDAFE6 /* SignInUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpView.swift; sourceTree = "<group>"; };
+		4AE572CC2AE0BD9B00EDAFE6 /* FontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontView.swift; sourceTree = "<group>"; };
+		4AE572CE2AE0BE3C00EDAFE6 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
+		4AE572D32AE0BF8500EDAFE6 /* RoomeaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomeaseApp.swift; sourceTree = "<group>"; };
+		4AE572EA2AE0C45500EDAFE6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4AE572EE2AE0C4B100EDAFE6 /* FormattedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattedDate.swift; sourceTree = "<group>"; };
+		4AE572EF2AE0C4B100EDAFE6 /* MonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		4AE572F02AE0C4B100EDAFE6 /* DatePickerCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCalendar.swift; sourceTree = "<group>"; };
+		4AE572F52AE0C4C100EDAFE6 /* WeekValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekValue.swift; sourceTree = "<group>"; };
+		4AE572F62AE0C4C100EDAFE6 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		4AE572F72AE0C4C100EDAFE6 /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		4AE572FB2AE0C4CD00EDAFE6 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		4AE572FD2AE0C58E00EDAFE6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		4AE572FF2AE0C59E00EDAFE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A0AA6732ADE147A00F2656D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A5F509D2AE0CBA000EF4820 /* FirebaseDatabaseSwift in Frameworks */,
+				4A5F509B2AE0CBA000EF4820 /* FirebaseDatabase in Frameworks */,
+				4A5F50972AE0CBA000EF4820 /* FirebaseAnalytics in Frameworks */,
+				4AA0E19B2AE1791E0019246B /* FirebaseFirestore in Frameworks */,
+				4AA0E19F2AE1791E0019246B /* FirebaseStorage in Frameworks */,
+				4A5F50992AE0CBA000EF4820 /* FirebaseAuth in Frameworks */,
+				4AA0E19D2AE1791E0019246B /* FirebaseFirestoreSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA6842ADE147C00F2656D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA68E2ADE147C00F2656D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A0AA66D2ADE147900F2656D = {
+			isa = PBXGroup;
+			children = (
+				4A0AA6782ADE147A00F2656D /* Roomease */,
+				4A0AA6772ADE147A00F2656D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A0AA6772ADE147A00F2656D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A0AA6762ADE147A00F2656D /* Roomease.app */,
+				4A0AA6872ADE147C00F2656D /* RoomeaseRoomeases.xctest */,
+				4A0AA6912ADE147C00F2656D /* RoomeaseUIRoomeases.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A0AA6782ADE147A00F2656D /* Roomease */ = {
+			isa = PBXGroup;
+			children = (
+				4A0AA67B2ADE147A00F2656D /* ContentView.swift */,
+				4AE572D32AE0BF8500EDAFE6 /* RoomeaseApp.swift */,
+				4AE572DF2AE0C3F500EDAFE6 /* View Model */,
+				4AE572D02AE0BEBF00EDAFE6 /* Views */,
+				4AE572D12AE0BED700EDAFE6 /* SupportViews */,
+				4A0AA67D2ADE147C00F2656D /* Assets.xcassets */,
+				4A0AA67F2ADE147C00F2656D /* Roomease.entitlements */,
+				4A0AA6802ADE147C00F2656D /* Preview Content */,
+			);
+			path = Roomease;
+			sourceTree = "<group>";
+		};
+		4A0AA6802ADE147C00F2656D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4A0AA6812ADE147C00F2656D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4A91F43A2AE2E6060073D0B5 /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+				4A91F43B2AE2E6060073D0B5 /* GroceryView.swift */,
+				4A91F43C2AE2E6060073D0B5 /* AddGroceryView.swift */,
+				4A91F43D2AE2E6060073D0B5 /* Grocery.swift */,
+			);
+			path = Grocery;
+			sourceTree = "<group>";
+		};
+		4A91F4412AE2E60B0073D0B5 /* Chores */ = {
+			isa = PBXGroup;
+			children = (
+				4A91F4422AE2E60B0073D0B5 /* AddChoreView.swift */,
+				4A91F4432AE2E60B0073D0B5 /* ChoreView.swift */,
+				4A91F4442AE2E60B0073D0B5 /* Room.swift */,
+				4A91F4452AE2E60B0073D0B5 /* Chore.swift */,
+				4A91F4462AE2E60B0073D0B5 /* RoomDetailView.swift */,
+			);
+			path = Chores;
+			sourceTree = "<group>";
+		};
+		4AE572D02AE0BEBF00EDAFE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A91F4412AE2E60B0073D0B5 /* Chores */,
+				4A91F43A2AE2E6060073D0B5 /* Grocery */,
+				4AE572E42AE0C42600EDAFE6 /* Calender */,
+				4AE572CE2AE0BE3C00EDAFE6 /* NavView.swift */,
+				4AE572C12AE0BB0A00EDAFE6 /* LogInView.swift */,
+				4AE572C32AE0BB6B00EDAFE6 /* RegisterView.swift */,
+				4AE572C72AE0BC0F00EDAFE6 /* JoinView.swift */,
+				4AE572CA2AE0BD3D00EDAFE6 /* SignInUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4AE572D12AE0BED700EDAFE6 /* SupportViews */ = {
+			isa = PBXGroup;
+			children = (
+				4AE572C52AE0BBA500EDAFE6 /* CustomViews.swift */,
+				4AE572CC2AE0BD9B00EDAFE6 /* FontView.swift */,
+			);
+			path = SupportViews;
+			sourceTree = "<group>";
+		};
+		4AE572DF2AE0C3F500EDAFE6 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AE572FD2AE0C58E00EDAFE6 /* RegistrationViewModel.swift */,
+				4A43631B2AE18AE300C96DDE /* GoogleService-Info.plist */,
+				4AE572EA2AE0C45500EDAFE6 /* AuthService.swift */,
+				4AE572FF2AE0C59E00EDAFE6 /* LoginViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		4AE572E42AE0C42600EDAFE6 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				4AE572F42AE0C4C100EDAFE6 /* week */,
+				4AE572ED2AE0C4B100EDAFE6 /* month */,
+				4AE572FB2AE0C4CD00EDAFE6 /* CalendarView.swift */,
+				4AA0E1A62AE17E490019246B /* MonthWeekTabView.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
+		4AE572ED2AE0C4B100EDAFE6 /* month */ = {
+			isa = PBXGroup;
+			children = (
+				4AE572EE2AE0C4B100EDAFE6 /* FormattedDate.swift */,
+				4AE572EF2AE0C4B100EDAFE6 /* MonthView.swift */,
+				4AE572F02AE0C4B100EDAFE6 /* DatePickerCalendar.swift */,
+			);
+			path = month;
+			sourceTree = "<group>";
+		};
+		4AE572F42AE0C4C100EDAFE6 /* week */ = {
+			isa = PBXGroup;
+			children = (
+				4AE572F52AE0C4C100EDAFE6 /* WeekValue.swift */,
+				4AE572F62AE0C4C100EDAFE6 /* Week.swift */,
+				4AE572F72AE0C4C100EDAFE6 /* WeekView.swift */,
+			);
+			path = week;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A0AA6752ADE147A00F2656D /* Roomease */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A0AA69B2ADE147C00F2656D /* Build configuration list for PBXNativeTarget "Roomease" */;
+			buildPhases = (
+				4A0AA6722ADE147A00F2656D /* Sources */,
+				4A0AA6732ADE147A00F2656D /* Frameworks */,
+				4A0AA6742ADE147A00F2656D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Roomease;
+			packageProductDependencies = (
+				4A5F50962AE0CBA000EF4820 /* FirebaseAnalytics */,
+				4A5F50982AE0CBA000EF4820 /* FirebaseAuth */,
+				4A5F509A2AE0CBA000EF4820 /* FirebaseDatabase */,
+				4A5F509C2AE0CBA000EF4820 /* FirebaseDatabaseSwift */,
+				4AA0E19A2AE1791E0019246B /* FirebaseFirestore */,
+				4AA0E19C2AE1791E0019246B /* FirebaseFirestoreSwift */,
+				4AA0E19E2AE1791E0019246B /* FirebaseStorage */,
+			);
+			productName = Test;
+			productReference = 4A0AA6762ADE147A00F2656D /* Roomease.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A0AA6862ADE147C00F2656D /* RoomeaseRoomeases */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A0AA69E2ADE147C00F2656D /* Build configuration list for PBXNativeTarget "RoomeaseRoomeases" */;
+			buildPhases = (
+				4A0AA6832ADE147C00F2656D /* Sources */,
+				4A0AA6842ADE147C00F2656D /* Frameworks */,
+				4A0AA6852ADE147C00F2656D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A0AA6892ADE147C00F2656D /* PBXTargetDependency */,
+			);
+			name = RoomeaseRoomeases;
+			productName = TestTests;
+			productReference = 4A0AA6872ADE147C00F2656D /* RoomeaseRoomeases.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4A0AA6902ADE147C00F2656D /* RoomeaseUIRoomeases */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A0AA6A12ADE147C00F2656D /* Build configuration list for PBXNativeTarget "RoomeaseUIRoomeases" */;
+			buildPhases = (
+				4A0AA68D2ADE147C00F2656D /* Sources */,
+				4A0AA68E2ADE147C00F2656D /* Frameworks */,
+				4A0AA68F2ADE147C00F2656D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A0AA6932ADE147C00F2656D /* PBXTargetDependency */,
+			);
+			name = RoomeaseUIRoomeases;
+			productName = TestUITests;
+			productReference = 4A0AA6912ADE147C00F2656D /* RoomeaseUIRoomeases.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A0AA66E2ADE147900F2656D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					4A0AA6752ADE147A00F2656D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					4A0AA6862ADE147C00F2656D = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 4A0AA6752ADE147A00F2656D;
+					};
+					4A0AA6902ADE147C00F2656D = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 4A0AA6752ADE147A00F2656D;
+					};
+				};
+			};
+			buildConfigurationList = 4A0AA6712ADE147A00F2656D /* Build configuration list for PBXProject "Roomease" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A0AA66D2ADE147900F2656D;
+			packageReferences = (
+				4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 4A0AA6772ADE147A00F2656D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A0AA6752ADE147A00F2656D /* Roomease */,
+				4A0AA6862ADE147C00F2656D /* RoomeaseRoomeases */,
+				4A0AA6902ADE147C00F2656D /* RoomeaseUIRoomeases */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A0AA6742ADE147A00F2656D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0AA6822ADE147C00F2656D /* Preview Assets.xcassets in Resources */,
+				4A0AA67E2ADE147C00F2656D /* Assets.xcassets in Resources */,
+				4A43631C2AE18AE300C96DDE /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA6852ADE147C00F2656D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA68F2ADE147C00F2656D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A0AA6722ADE147A00F2656D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE572D22AE0BF5300EDAFE6 /* CustomViews.swift in Sources */,
+				4AE572F92AE0C4C100EDAFE6 /* Week.swift in Sources */,
+				4A91F43E2AE2E6060073D0B5 /* GroceryView.swift in Sources */,
+				4AE572F32AE0C4B100EDAFE6 /* DatePickerCalendar.swift in Sources */,
+				4AE572FE2AE0C58E00EDAFE6 /* RegistrationViewModel.swift in Sources */,
+				4AE572CF2AE0BE3C00EDAFE6 /* NavView.swift in Sources */,
+				4A91F4492AE2E60B0073D0B5 /* Room.swift in Sources */,
+				4AE572D42AE0BF8500EDAFE6 /* RoomeaseApp.swift in Sources */,
+				4AA0E1992AE171150019246B /* AuthService.swift in Sources */,
+				4AE572C22AE0BB0A00EDAFE6 /* LogInView.swift in Sources */,
+				4A91F44B2AE2E60B0073D0B5 /* RoomDetailView.swift in Sources */,
+				4AE573002AE0C59E00EDAFE6 /* LoginViewModel.swift in Sources */,
+				4A91F4482AE2E60B0073D0B5 /* ChoreView.swift in Sources */,
+				4A91F44A2AE2E60B0073D0B5 /* Chore.swift in Sources */,
+				4AA0E1A72AE17E490019246B /* MonthWeekTabView.swift in Sources */,
+				4AE572CB2AE0BD3D00EDAFE6 /* SignInUpView.swift in Sources */,
+				4AE572F12AE0C4B100EDAFE6 /* FormattedDate.swift in Sources */,
+				4AE572C42AE0BB6B00EDAFE6 /* RegisterView.swift in Sources */,
+				4AE572F22AE0C4B100EDAFE6 /* MonthView.swift in Sources */,
+				4AE572FC2AE0C4CD00EDAFE6 /* CalendarView.swift in Sources */,
+				4AE572F82AE0C4C100EDAFE6 /* WeekValue.swift in Sources */,
+				4A0AA67C2ADE147A00F2656D /* ContentView.swift in Sources */,
+				4A91F4472AE2E60B0073D0B5 /* AddChoreView.swift in Sources */,
+				4AE572FA2AE0C4C100EDAFE6 /* WeekView.swift in Sources */,
+				4AE572C82AE0BC0F00EDAFE6 /* JoinView.swift in Sources */,
+				4A91F4402AE2E6060073D0B5 /* Grocery.swift in Sources */,
+				4A91F43F2AE2E6060073D0B5 /* AddGroceryView.swift in Sources */,
+				4AE572CD2AE0BD9B00EDAFE6 /* FontView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA6832ADE147C00F2656D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A0AA68D2ADE147C00F2656D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A0AA6892ADE147C00F2656D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A0AA6752ADE147A00F2656D /* Roomease */;
+			targetProxy = 4A0AA6882ADE147C00F2656D /* PBXContainerItemProxy */;
+		};
+		4A0AA6932ADE147C00F2656D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A0AA6752ADE147A00F2656D /* Roomease */;
+			targetProxy = 4A0AA6922ADE147C00F2656D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4A0AA6992ADE147C00F2656D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4A0AA69A2ADE147C00F2656D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		4A0AA69C2ADE147C00F2656D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Roomease/Roomease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Roomease/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3750.Roomease;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A0AA69D2ADE147C00F2656D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Roomease/Roomease.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Roomease/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3750.Roomease;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4A0AA69F2ADE147C00F2656D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3950.TestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomease.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Roomease";
+			};
+			name = Debug;
+		};
+		4A0AA6A02ADE147C00F2656D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3950.TestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomease.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Roomease";
+			};
+			name = Release;
+		};
+		4A0AA6A22ADE147C00F2656D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3950.TestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Test;
+			};
+			name = Debug;
+		};
+		4A0AA6A32ADE147C00F2656D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CS3950.TestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Test;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A0AA6712ADE147A00F2656D /* Build configuration list for PBXProject "Roomease" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0AA6992ADE147C00F2656D /* Debug */,
+				4A0AA69A2ADE147C00F2656D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A0AA69B2ADE147C00F2656D /* Build configuration list for PBXNativeTarget "Roomease" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0AA69C2ADE147C00F2656D /* Debug */,
+				4A0AA69D2ADE147C00F2656D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A0AA69E2ADE147C00F2656D /* Build configuration list for PBXNativeTarget "RoomeaseRoomeases" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0AA69F2ADE147C00F2656D /* Debug */,
+				4A0AA6A02ADE147C00F2656D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A0AA6A12ADE147C00F2656D /* Build configuration list for PBXNativeTarget "RoomeaseUIRoomeases" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A0AA6A22ADE147C00F2656D /* Debug */,
+				4A0AA6A32ADE147C00F2656D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A5F50962AE0CBA000EF4820 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		4A5F50982AE0CBA000EF4820 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		4A5F509A2AE0CBA000EF4820 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		4A5F509C2AE0CBA000EF4820 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		4AA0E19A2AE1791E0019246B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		4AA0E19C2AE1791E0019246B /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		4AA0E19E2AE1791E0019246B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5F50952AE0CBA000EF4820 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4A0AA66E2ADE147900F2656D /* Project object */;
+}
