@@ -2,7 +2,7 @@ import SwiftUI
 import FirebaseAuth
 
 final class AuthViewModel: ObservableObject {
-    var user: User? {
+    var user: FirebaseAuth.User? {
         didSet {
             objectWillChange.send()
         }

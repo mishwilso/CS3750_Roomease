@@ -11,10 +11,12 @@ import SwiftUI
 
 //Set This up Properly
 struct User{
+    var owner: Bool
     var fname: String
     var lname: String
+    var houseDoc: String
+    var houseName: String
 }
-
 
 
 //Custom Text Field Things
