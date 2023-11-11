@@ -90,58 +90,148 @@ struct JoinFormView: View {
 }
   
 
+//struct JoinView: View {
+//    
+//    @State var houseName = ""
+//    @State var houseCode = ""
+//    @State var errorMessage = "  "
+//    @State var errorCode = "  "
+//    
+//    var body: some View {
+//        NavigationView {
+//            
+//            ZStack (alignment: .center){
+//                
+//                
+//                JoinFormView(houseName: $houseName, houseCode: $houseCode)
+//                                
+//                //Sign in button
+//                VStack(spacing: 95){
+//                    if(houseCode.isEmpty){
+//                        
+//                            Button(action: { errorMessage = "Please Enter Valid House Code"}, label: {
+//                                CustomButton(bttnTitle: "Join House", bColor: lighterGray)
+//                            })
+//                        
+//                    } else {
+//                        
+//                            NavigationLink(destination: NavView(), label: {CustomButton(bttnTitle: "Join House", bColor: lighterGray)})
+//                        
+//                    }
+//                    
+//                    Spacer().frame(height: 35)
+//                    
+//                    if(houseName.isEmpty){
+//
+//                            Button(action: { errorMessage = "Please Enter Valid House Name"}, label: {
+//                                CustomButton(bttnTitle: "Create House", bColor: lighterGray)
+//                            })
+//                    } else {
+//                            NavigationLink(destination: NavView(), label: {CustomButton(bttnTitle: "Create House", bColor: lighterGray)})
+//                        
+//                    }
+//                    
+//                    
+//                    
+//                }.padding(.top, 120)
+//                
+//                Text(errorMessage).padding(.top, 750).fontWeight(.bold).foregroundColor(.white)
+//            }
+//            
+//        }
+//        .navigationBarHidden(true)
+//    }
+//    
+//}
 struct JoinView: View {
     
     @State var houseName = ""
     @State var houseCode = ""
     @State var errorMessage = "  "
     @State var errorCode = "  "
+
+    @State private var joinSuccessful = false
+    @StateObject var createViewModel = CreateViewModel()
+    @StateObject var joinViewModel = JoinViewModel()
     
     var body: some View {
         NavigationView {
             
             ZStack (alignment: .center){
                 
+                JoinFormView(houseName: $createViewModel.houseName, houseCode: $joinViewModel.houseCode)
                 
-                JoinFormView(houseName: $houseName, houseCode: $houseCode)
-                                
-                //Sign in button
+                //Join button
                 VStack(spacing: 95){
-                    if(houseCode.isEmpty){
-                        
-                            Button(action: { errorMessage = "Please Enter Valid House Code"}, label: {
-                                CustomButton(bttnTitle: "Join House", bColor: lighterGray)
-                            })
-                        
-                    } else {
-                        
-                            NavigationLink(destination: NavView(), label: {CustomButton(bttnTitle: "Join House", bColor: lighterGray)})
+                    
+                    Button(action: {
+                        if validateCodeInput(){
+                            Task {
+                                do {
+                                    try await joinViewModel.joinHouse()
+                                    joinSuccessful = true
+                                } catch {
+                                    errorCode = "Join Household Failed"
+                                }
+                            }
+                        } else {
+                            errorCode = "Please Enter Valid Credentials"
+                        }
+                    }) {
+                        Text("Join House").fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(height: 58)
+                            .frame(minWidth: 0, maxWidth: 300)
+                            .background(lighterGray)
+                            .cornerRadius(20.0)
                         
                     }
                     
                     Spacer().frame(height: 35)
                     
-                    if(houseName.isEmpty){
-
-                            Button(action: { errorMessage = "Please Enter Valid House Name"}, label: {
-                                CustomButton(bttnTitle: "Create House", bColor: lighterGray)
-                            })
-                    } else {
-                            NavigationLink(destination: NavView(), label: {CustomButton(bttnTitle: "Create House", bColor: lighterGray)})
+                    Button(action: {
+                        if validateNameInput(){
+                            Task {
+                                do {
+                                    try await createViewModel.registerHouse()
+                                    joinSuccessful = true
+                                } catch {
+                                    errorCode = "Create Household Failed"
+                                }
+                            }
+                        } else {
+                            errorCode = "Please Enter Valid Credentials"
+                        }
+                    }) {
+                        Text("Create House").fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(height: 58)
+                            .frame(minWidth: 0, maxWidth: 300)
+                            .background(lighterGray)
+                            .cornerRadius(20.0)
                         
                     }
-                    
                     
                     
                 }.padding(.top, 120)
                 
                 Text(errorMessage).padding(.top, 750).fontWeight(.bold).foregroundColor(.white)
             }
-            
         }
         .navigationBarHidden(true)
+        .navigationDestination(isPresented: $joinSuccessful) {
+            ContentNavView()
+        }
+    }
+                
+    func validateNameInput() -> Bool {
+        return  !createViewModel.houseName.isEmpty
+    }
+    func validateCodeInput() -> Bool {
+        return  !joinViewModel.houseCode.isEmpty
     }
 }
+
 
 struct JoinView_Previews: PreviewProvider {
     static var previews: some View {

@@ -18,22 +18,29 @@ struct ChoreView: View {
         Room(name: "Dining room"),
         Room(name: "Living room"),
         Room(name: "Bedroom"),
-        Room(name: "Custom")
     ]
+    @State var newRoom = ""
 
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                VStack (spacing: 10){
                     Text("Click on a room to view all chores").font(.title).bold()
-                    ForEach(rooms, id: \.id) { room in
-                        NavigationLink(destination: RoomDetailView(room: $rooms.first { $0.id == room.id }!)) {
-                            Text(room.name)
+                    ForEach($rooms) { $room in
+                        NavigationLink(destination: RoomDetailView(room: $room)) {
+                            Text($room.name.wrappedValue)
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
                                 .background(Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
+                    }
+                    NavigationLink(destination: AddRoomView(rooms: $rooms, newRoom: $newRoom)) {
+                        Text("Add custom room")
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
+                            .background(Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
                 }
                 .padding()

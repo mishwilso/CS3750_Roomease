@@ -15,4 +15,9 @@ class LoginViewModel: ObservableObject {
         print("Attempting log in.")
         try await AuthService.shared.login(email: email, password: password)
     }
+    
+    func signOut() async throws {
+        print("Attempting log out.")
+        try await AuthService.shared.signOut()
+    }
 }

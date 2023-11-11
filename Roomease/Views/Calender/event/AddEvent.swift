@@ -13,7 +13,7 @@ struct AddEvent: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     @Binding var addEvent: Bool
-    @StateObject var eventsFireViewModel = EventsFireViewModel()
+    //@StateObject var eventsFireViewModel = EventsFireViewModel()
 
     
     

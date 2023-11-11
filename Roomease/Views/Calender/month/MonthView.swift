@@ -26,13 +26,8 @@ struct MonthView: View {
                 .padding(.horizontal)
                 .datePickerStyle(.graphical)
             Divider()
-            // TODO: add the events for the day here
-            EventView(date: $selectedDate)
         }
-        
-        .padding()
-        
-    }
+        .padding()    }
 }
 
 #Preview {

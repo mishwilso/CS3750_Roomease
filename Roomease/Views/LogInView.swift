@@ -123,7 +123,8 @@ struct LoginView: View {
         }
         .navigationBarHidden(true)
         .navigationDestination(isPresented: $loginSuccessful) {
-            NavView()
+            ContentNavView()
+            //NavView()
         }
     }
                 

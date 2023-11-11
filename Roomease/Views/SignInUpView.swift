@@ -68,7 +68,7 @@ struct SignInUpView: View {
             
             
             
-        }
+        }.navigationBarHidden(true)
     }
     
 }

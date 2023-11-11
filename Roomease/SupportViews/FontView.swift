@@ -52,6 +52,13 @@ struct FontView: View {
             Text("Hello, world!").font(.regularFont)
             Text("Hello, world!").font(.smallFont)
             Text("Hello, world!").font(.largeFont)
+            
+            Text(RandomIdGenerator.getBase62(length: 6))
+            Text(RandomIdGenerator.getBase62(length: 6))
+            Text(RandomIdGenerator.getBase62(length: 6))
+            Text(RandomIdGenerator.getBase62(length: 6))
+            Text(RandomIdGenerator.getBase62(length: 6))
+
         }
     }
 }

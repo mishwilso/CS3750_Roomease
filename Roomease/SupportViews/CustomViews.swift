@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 
 
 //Set This up Properly
 struct User{
-    var owner: Bool
     var fname: String
     var lname: String
     var houseDoc: String
@@ -72,10 +72,6 @@ struct CustomButton: View {
 enum DBError: Error {
     case registrationFailed(errorMessage: String)
     case loginFailed(errorMessage: String)
-    case choreAddFailed(errorMessage: String)
-    case eventAddFailed(errorMessage: String)
-    case groceryAddFailed(errorMessage: String)
-    case messageAddFailes(errorMessage: String)
 }
 
 func testRandomIdGenerator() {
@@ -111,4 +107,3 @@ struct RandomIdGenerator {
         return result
     }
 }
-

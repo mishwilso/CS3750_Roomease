@@ -11,23 +11,19 @@ struct MonthWeekTabView: View {
     @Binding var selectedIdx: Int
     var body: some View {
         TabView (selection: $selectedIdx){
-            // display month view
             MonthView()
                 .tabItem {
-                    Label("Month", systemImage: "circle.fill")
+                    Label("Month", systemImage: "dot")
                 }.tag(0)
-            // display week view
+                
             WeekView()
                 .tabItem {
-                    Label("Week", systemImage: "circle.fill")
+                    Label("Week", systemImage: "dot")
                 }.tag(1)
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .frame(maxWidth: .infinity)
-        
     }
         
 }
-
-

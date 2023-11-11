@@ -31,3 +31,4 @@ class ChatViewModel: ObservableObject {
         await AuthService.shared.sendMessage(group_id: group_id, sender: sender, text: text, received: received, pinned: pinned)
     }
 }
+
