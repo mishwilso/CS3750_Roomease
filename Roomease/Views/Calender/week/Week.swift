@@ -16,7 +16,7 @@ class WeekStore : ObservableObject {
     
     // Current chosen date indicator
     @Published var currentDate : Date = Date()
-    
+    @Published var today : Date = Date()
     // Index indicator
     @Published var currentIndex : Int = 0
     @Published var indexToUpdate : Int = 0
@@ -84,6 +84,11 @@ class WeekStore : ObservableObject {
     func isToday(date:Date)->Bool{
         let calendar = Calendar.current
         return calendar.isDate(currentDate, inSameDayAs: date)
+    }
+    
+    func isCurrDate(date:Date)->Bool{
+        let calendar = Calendar.current
+        return calendar.isDate(today, inSameDayAs: date)
     }
     
     
