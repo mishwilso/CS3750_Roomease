@@ -22,13 +22,16 @@ class ChoresViewModel: ObservableObject {
     func deleteChore() async throws {
         print("Attempting to delete Chore")
         
-        try await AuthService.shared.deleteChore(task: task)
+        AuthService.shared.deleteChore(task: task) { error in
+            if let error = error {
+                print("Error deleting chore: \(error.localizedDescription)")
+            }
+            
+            else {
+                print("Chore was deleted successfully.")
+            }
+        }
         
     }
     
-    func gettheChores() async throws {
-        print("Attempting to get Chores")
-        
-        try await AuthService.shared.getChores()
-    }
 }
