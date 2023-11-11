@@ -25,12 +25,15 @@ class EventsFireViewModel: ObservableObject {
     func deleteEvent() async throws {
         print("Attempting to delete Event")
         
-        try await AuthService.shared.deleteEvent(title: title)
+        AuthServide.shared.deleteEvent(title: title) {error in
+            if let error = error {
+                print("Error deleting event: \(error.localizedDescription)")
+            }
+            
+            else {
+                print("Event successfully deleted")
+            }
+        }
     }
     
-    func gettheEvents() async throws {
-        print("Attempting to get Events")
-        
-        try await AuthService.shared.getEvents()
-    }
 }
