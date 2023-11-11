@@ -73,3 +73,38 @@ enum DBError: Error {
     case registrationFailed(errorMessage: String)
     case loginFailed(errorMessage: String)
 }
+
+func testRandomIdGenerator() {
+    // Create five IDs of six base 62 characters
+    for _ in 0..<5 {
+        print(RandomIdGenerator.getBase62(length: 6))
+    }
+
+    // Create five IDs of eight base 36 characters
+    for _ in 0..<5 {
+        print(RandomIdGenerator.getBase36(length: 8))
+    }
+}
+
+struct RandomIdGenerator {
+    private static let base62Chars: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+
+    static func getBase62(length: Int) -> String {
+        var result = ""
+        for _ in 0..<length {
+            let randomIndex = Int.random(in: 0..<62)
+            result.append(base62Chars[randomIndex])
+        }
+        return result
+    }
+
+    static func getBase36(length: Int) -> String {
+        var result = ""
+        for _ in 0..<length {
+            let randomIndex = Int.random(in: 0..<36)
+            result.append(base62Chars[randomIndex])
+        }
+        return result
+    }
+}
+
