@@ -19,15 +19,18 @@ class GroceriesFireViewModel: ObservableObject {
         try await AuthService.shared.addGrocery(item: item, purpose: purpose, store: store)
     }
     
-    func deleteGrocery() async throws {
+    func deleteGrocery() {
         print("Attempting to delete Grocery")
         
-        try await AuthService.shared.deleteGrocery(item: item)
+        AuthService.shared.deleteGrocery(item: item) { error in
+            if let error = error {
+                print("Error deleting grocery: \(error.localizedDescription)")
+            }
+            
+            else {
+                print("Grocery deleted successfully")
+            }
+        }
     }
     
-    func gettheGroceries() async throws {
-        print("Attempting to get Groceries")
-        
-        try await AuthService.shared.getGroceries()
-    }
 }
