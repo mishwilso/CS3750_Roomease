@@ -134,7 +134,7 @@ class AuthService {
                 let user = authResult.user
                 
                 //TODO: Make Firestore class
-                let userData: [String: Any] = ["HouseID": 10, "firstName": firstname, "lastName": lastname]
+                let userData: [String: Any] = ["HouseID": 10, "firstName": firstname, "lastName": lastname, "Chores": [], "Events": [], "Groceries": []]
                 
                 let db = Firestore.firestore()
                 
@@ -149,7 +149,354 @@ class AuthService {
             }
         
     }
-        
+    
+    func addChore(task: String, frequency: String, deadline: String) async throws {
+        do {
+            let db = Firestore.firestore()
+            if let user = Auth.auth().currentUser {
+                let userDocument = db.collection("Users").document(user.uid)
+                let documentSnapshot = try await userDocument.getDocument()
+                
+                if let currentData = documentSnapshot.data() as? [String: Any], let houseID = currentData["HouseID"] as? String {
+                    // Create a new chore object
+                    let newChore: [String: Any] = ["Task": task, "Frequency": frequency, "Deadline": deadline]
+                    
+                    // Reference the "Roomease" collection and the specific houseID document
+                    let roomeaseCollection = db.collection("Roomease")
+                    let houseDocument = roomeaseCollection.document("\(houseID)")
+                    
+                    // Update the "chore" array in the house document
+                    houseDocument.updateData([
+                        "Chores": FieldValue.arrayUnion([newChore])
+                    ]) { error in
+                        if let error = error {
+                            print("Error adding chore to Roomease: \(error.localizedDescription)")
+                            throw DBError.choreAddFailed(errorMessage: error.localizedDescription)
+                        } else {
+                            print("Chore added to Roomease successfully")
+                        }
+                    }
+                } else {
+                    print("HouseID not found in user data or user document not found.")
+                }
+            }
+        } catch {
+            print("Error adding chore: \(error.localizedDescription)")
+            throw DBError.choreAddFailed(errorMessage: error.localizedDescription)
+        }
+    }
+    
+    func getChores(completion: @escaping ([[String: Any]]?, Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? String else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil, nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.getDocument { (houseDocumentSnapshot, houseError) in
+                    if let houseError = houseError {
+                        print("Error getting house document: \(houseError.localizedDescription)")
+                        completion(nil, houseError)
+                        return
+                    }
+                    
+                    if let houseDocumentData = houseDocumentSnapshot?.data(),
+                       let chores = houseDocumentData["Chores"] as? [[String: Any]] {
+                        completion(chores, nil)
+                    } else {
+                        // Chores array not found or house document doesn't exist
+                        completion(nil, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteChore(task: String, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? String else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.updateData([
+                    "Chores": FieldValue.arrayRemove([["Task": task]])
+                ]) { error in
+                    if let error = error {
+                        print("Error deleting chore from Roomease: \(error.localizedDescription)")
+                        completion(error)
+                    } else {
+                        print("Chore deleted from Roomease successfully")
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func addEvent(day: Int, endTime: String, month: Int, startTime: String, title: String, year: Int) async throws {
+        do {
+            let db = Firestore.firestore()
+            if let user = Auth.auth().currentUser {
+                let userDocument = db.collection("Users").document(user.uid)
+                let documentSnapshot = try await userDocument.getDocument()
+                
+                if let currentData = documentSnapshot.data() as? [String: Any], let houseID = currentData["HouseID"] as? String {
+                    // Create a new chore object
+                    let newEvent: [String: Any] = ["Day": day, "EndTime": endTime, "Month": month, "StartTime": startTime, "Title": title, "Year": year]
+                    
+                    // Reference the "Roomease" collection and the specific houseID document
+                    let roomeaseCollection = db.collection("Roomease")
+                    let houseDocument = roomeaseCollection.document("\(houseID)")
+                    
+                    // Update the "chore" array in the house document
+                    houseDocument.updateData([
+                        "Events": FieldValue.arrayUnion([newEvent])
+                    ]) { error in
+                        if let error = error {
+                            print("Error adding event to Roomease: \(error.localizedDescription)")
+                            throw DBError.choreAddFailed(errorMessage: error.localizedDescription)
+                        } else {
+                            print("Event added to Roomease successfully")
+                        }
+                    }
+                } else {
+                    print("HouseID not found in user data or user document not found.")
+                }
+            }
+        } catch {
+            print("Error adding event: \(error.localizedDescription)")
+            throw DBError.eventAddFailed(errorMessage: error.localizedDescription)
+        }
+    }
+    
+    func getEvents(completion: @escaping ([[String: Any]]?, Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? String else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil, nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.getDocument { (houseDocumentSnapshot, houseError) in
+                    if let houseError = houseError {
+                        print("Error getting house document: \(houseError.localizedDescription)")
+                        completion(nil, houseError)
+                        return
+                    }
+                    
+                    if let houseDocumentData = houseDocumentSnapshot?.data(),
+                       let events = houseDocumentData["Events"] as? [[String: Any]] {
+                        completion(events, nil)
+                    } else {
+                        // Chores array not found or house document doesn't exist
+                        completion(nil, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteEvent(title: String, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? String else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.updateData([
+                    "Events": FieldValue.arrayRemove([["Title": title]])
+                ]) { error in
+                    if let error = error {
+                        print("Error deleting event from Roomease: \(error.localizedDescription)")
+                        completion(error)
+                    } else {
+                        print("Event deleted from Roomease successfully")
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func addGrocery(item: String, purpose: String, store: String) async throws {
+        do {
+            let db = Firestore.firestore()
+            if let user = Auth.auth().currentUser {
+                let userDocument = db.collection("Users").document(user.uid)
+                let documentSnapshot = try await userDocument.getDocument()
+                
+                if let currentData = documentSnapshot.data() as? [String: Any], let houseID = currentData["HouseID"] as? String {
+                    // Create a new chore object
+                    let newGrocery: [String: Any] = ["Item": item, "Purpose": purpose, "Store": store]
+                    
+                    // Reference the "Roomease" collection and the specific houseID document
+                    let roomeaseCollection = db.collection("Roomease")
+                    let houseDocument = roomeaseCollection.document("\(houseID)")
+                    
+                    // Update the "chore" array in the house document
+                    houseDocument.updateData([
+                        "Groceries": FieldValue.arrayUnion([newChore])
+                    ]) { error in
+                        if let error = error {
+                            print("Error adding grocery to Roomease: \(error.localizedDescription)")
+                            throw DBError.choreAddFailed(errorMessage: error.localizedDescription)
+                        } else {
+                            print("Grocery added to Roomease successfully")
+                        }
+                    }
+                } else {
+                    print("HouseID not found in user data or user document not found.")
+                }
+            }
+        } catch {
+            print("Error adding grocery: \(error.localizedDescription)")
+            throw DBError.groceryAddFailed(errorMessage: error.localizedDescription)
+        }
+    }
+    
+    func getGroceries(completion: @escaping ([[String: Any]]?, Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? Int else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil, nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.getDocument { (houseDocumentSnapshot, houseError) in
+                    if let houseError = houseError {
+                        print("Error getting house document: \(houseError.localizedDescription)")
+                        completion(nil, houseError)
+                        return
+                    }
+                    
+                    if let houseDocumentData = houseDocumentSnapshot?.data(),
+                       let groceries = houseDocumentData["Groceries"] as? [[String: Any]] {
+                        completion(groceries, nil)
+                    } else {
+                        // Chores array not found or house document doesn't exist
+                        completion(nil, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteGrocery(item: String, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        if let user = Auth.auth().currentUser {
+            let userDocument = db.collection("Users").document(user.uid)
+            
+            userDocument.getDocument { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error getting user document: \(error.localizedDescription)")
+                    completion(error)
+                    return
+                }
+                
+                guard let documentData = documentSnapshot?.data(),
+                      let houseID = documentData["HouseID"] as? Int else {
+                    print("HouseID not found in user data or user document not found.")
+                    completion(nil)
+                    return
+                }
+                
+                // Reference the "Roomease" collection and the specific house document
+                let roomeaseCollection = db.collection("Roomease")
+                let houseDocument = roomeaseCollection.document("\(houseID)")
+                
+                houseDocument.updateData([
+                    "Groceries": FieldValue.arrayRemove([["Item": item]])
+                ]) { error in
+                    if let error = error {
+                        print("Error deleting grocery from Roomease: \(error.localizedDescription)")
+                        completion(error)
+                    } else {
+                        print("Grocery deleted from Roomease successfully")
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
     
     func createHouse(houseName: String) {
         // Generate a random ID
