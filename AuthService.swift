@@ -183,7 +183,7 @@ class AuthService {
             }
             
             print("Creating House Databases")
-            let calendarManager = CalendarManager()
+            let calendarManager = await CalendarManager()
             await calendarManager.createCalendar(name: houseName, ownerId: user.uid)
             let choreManager = ChoreManager()
             await choreManager.addRoom(roomName: "Kitchen") { error in
