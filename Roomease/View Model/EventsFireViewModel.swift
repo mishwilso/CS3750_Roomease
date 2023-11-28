@@ -10,7 +10,7 @@ import Foundation
 class EventsFireViewModel: ObservableObject {
     
     @Published var endTime = ""
-    @Published var dat = 0
+    @Published var day = 0
     @Published var month = 0
     @Published var startTime = ""
     @Published var title = ""
