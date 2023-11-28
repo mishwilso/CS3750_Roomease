@@ -17,7 +17,7 @@ class EventsArrayViewModel: ObservableObject {
         AuthService.shared.getEvents {[weak self] (events, error) in
             guard let self = self else { return }
             
-            if let error = {
+            if let error = error {
                 print("Error getting the events: \(error)")
             }
             
