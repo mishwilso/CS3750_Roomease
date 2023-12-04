@@ -19,71 +19,98 @@ struct AddEvent: View {
     
     //@State private var date: Date
     var body: some View {
-        // control buttons
-        HStack (alignment: .top, spacing: 200) {
-            Button("Cancel") {
-                // go back to the calendar view
-                addEvent = false
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .frame(alignment: .leading)
+        ZStack (alignment: .center) {
+            Ellipse()
+                .frame(width: 458, height: 420)
+                .padding(.trailing, -500)
+                .foregroundColor(lighterGray)
+                .padding(.top, -550)
             
-            Button("Add") {
-                // save the information and go back to the calendar view
-//                let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
-//                let startComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: startDate)
-//                let endComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: endDate)
-                
-
-                // add event
-                // TODO: hookup to firebase here!!
-                Task {
-                        do {
-                            if endDate < startDate {
-                                endDate = startDate
-                            }
-                            try await addEventToCal(title: eventTitle, startDate: startDate, endDate: endDate)
-                            addEvent = false
-                        }
-                        catch {
-                            print(error)
-                            addEvent = false
-                        }
+            Ellipse()
+                .frame(width: 510, height: 478)
+                .padding(.leading, -200)
+                .foregroundColor(lightGray)
+                .padding(.top, -590)
+            
+            VStack (spacing: 20) {
+                Text("Add New Event").bold().padding().font(.system(size: 35)).foregroundColor(.black)
+                VStack (alignment: .center, spacing: 20){
+                   
+                    // get the event title
+                    CustomTextField(placeHolder: "Event Title", bColor: textColor, tOpacity: 0.6, value: $eventTitle)
+                        .padding([.bottom], 10)
+                    
+                    // get the date of the event (just one day right now)
+                    
+                    
+                    // get the start time
+                    DatePicker(selection: $startDate, displayedComponents: [.date, .hourAndMinute]) {
+                        Text("Starts")
                     }
-                addEvent = false
+                    .font(.system(size: 18))
+                    
+                    // get the end time
+                    DatePicker(selection: $endDate, in: startDate..., displayedComponents: [.date, .hourAndMinute]) {
+                        Text("Ends")
+                    }
+                    .font(.system(size: 18))
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment:
+                        .center)
+                
+                // control buttons
+                HStack (spacing: 20) {
+                    Button("Cancel") {
+                        // go back to the calendar view
+                        addEvent = false
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .frame(width: 150, height: 75)
+                    .foregroundColor(.black) // 2
+                    .background(lighterGray) // 3
+                    .cornerRadius(10)
+                    .padding()
+                    
+                    Button("Add") {
+                        // save the information and go back to the calendar view
+        //                let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
+        //                let startComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: startDate)
+        //                let endComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: endDate)
+                        
+
+                        // add event
+                        // TODO: hookup to firebase here!!
+                        Task {
+                                do {
+                                    if endDate < startDate {
+                                        endDate = startDate
+                                    }
+                                    try await addEventToCal(title: eventTitle, startDate: startDate, endDate: endDate)
+                                    addEvent = false
+                                }
+                                catch {
+                                    print(error)
+                                    addEvent = false
+                                }
+                            }
+                        addEvent = false
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .frame(width: 150, height: 75)
+                    .foregroundColor(.black) // 2
+                    .background(lighterGray) // 3
+                    .cornerRadius(10)
+                    .padding()
+                    
+                }
             }
-            .buttonStyle(BorderlessButtonStyle())
-            
         }
         
+        
 
-        VStack (alignment: .center, spacing: 20){
-           
-            // get the event title
-            TextField(
-                "Event title",
-                text: $eventTitle
-            )
-            .frame(alignment: .center)
-            .border(Color.black, width: 1)
-            
-            // get the date of the event (just one day right now)
-            
-            
-            // get the start time
-            DatePicker(selection: $startDate, displayedComponents: [.date, .hourAndMinute]) {
-                Text("Starts")
-            }
-            
-            // get the end time
-            DatePicker(selection: $endDate, in: startDate..., displayedComponents: [.date, .hourAndMinute]) {
-                Text("Ends")
-            }
-            
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment:
-                .center)
+        
         
     }
     func addEventToCal(title: String, startDate: Date, endDate: Date) async {

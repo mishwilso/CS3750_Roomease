@@ -23,13 +23,12 @@ struct MonthView: View {
         VStack() {
             Divider().frame(height: 1)
             DatePicker("Select Date", selection: $selectedDate, displayedComponents: [.date])
-                .padding(.horizontal)
+                .padding()
                 .datePickerStyle(.graphical)
             Divider()
             // TODO: add the events for the day here
             EventView(date: $selectedDate)
         }
-        
         .padding()
         
     }

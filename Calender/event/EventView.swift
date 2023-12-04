@@ -14,39 +14,65 @@ struct EventView: View {
     var body: some View {
         // get all the events for today
         //let calendarDate = Calendar.current.dateComponents([.day, .year, .month], from: date)
-
-        VStack {
-            if todaysEvents.count == 0 {
-                Text("Nothing scheduled for today")
-            }
-            else {
-                List($todaysEvents) { $event in
-                    Button {
-                        deleteEvent = true
+            
+            
+            VStack {
+                if todaysEvents.count == 0 {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 300, height: 150)
+                            .cornerRadius(10)
+                            .foregroundColor(lighterGray)
+                        VStack (spacing: 10){
+                            Text("No Scheduled Events").bold().padding().font(.system(size: 20)).foregroundColor(.gray).cornerRadius(10).background(lighterGray)
+                            Image(systemName: "face.smiling")
+                                .foregroundColor(.gray)
+                        }
                         
-                    } label: {
-                        Text("\(event.title)\n\nStarts: \(event.startDate.formatted(date: .abbreviated, time: .standard))\nEnds: \(event.endDate.formatted(date: .abbreviated, time: .standard))")
                     }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .sheet(isPresented: $deleteEvent) {
-                        DeleteEventView(event: $event, deleteEvent: $deleteEvent)
+//                    Text("No Scheduled Events").bold().padding().font(.system(size: 20)).foregroundColor(.gray).cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/).background(lighterGray)
+                }
+                else {
+                    VStack (alignment: .center){
+                        List($todaysEvents) { $event in
+                            Button {
+                                deleteEvent = true
+                                
+                            } label: {
+                                Text("\(event.title)").bold().padding().font(.system(size: 20)).foregroundColor(.gray).underline()
+
+                                Text("Starts: \(event.startDate.formatted(date: .numeric, time: .shortened))").frame(alignment: .leading).padding()
+                                Text("Ends: \(event.endDate.formatted(date: .numeric, time: .shortened))").frame(alignment: .leading).padding()
+                            }
+                            .foregroundColor(.black) // 2
+                            .background(lighterGray) // 3
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .sheet(isPresented: $deleteEvent) {
+                                DeleteEventView(event: $event, deleteEvent: $deleteEvent)
+                            }
+                        }
+    //                    .frame(width: 500)
+                        .scrollContentBackground(.hidden)
                     }
                 }
+                
+                
             }
-            
-            
-        }.onAppear {
-            Task {
-                do {
-                    try await getEvents()
-                }
-                catch {
-                    print(error)
+            .frame(width: 500, height: 300, alignment: .center)
+            .onChange(of: date) { date in
+                Task {
+                    do {
+                        try await getEvents()
+                    }
+                    catch {
+                        print(error)
+                    }
+                    
                 }
                 
             }
-            
-        }
+        
 
         
         

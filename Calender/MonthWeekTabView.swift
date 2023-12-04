@@ -17,10 +17,10 @@ struct MonthWeekTabView: View {
                     Label("Month", systemImage: "circle.fill")
                 }.tag(0)
                 
-            WeekView(selectedDate: $selectedDate)
-                .tabItem {
-                    Label("Week", systemImage: "circle.fill")
-                }.tag(1)
+//            WeekView(selectedDate: $selectedDate)
+//                .tabItem {
+//                    Label("Week", systemImage: "circle.fill")
+//                }.tag(1)
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

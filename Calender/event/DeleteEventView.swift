@@ -12,28 +12,64 @@ struct DeleteEventView: View {
     @Binding var deleteEvent: Bool
 
     var body: some View {
-        VStack {
+        
+        ZStack (alignment: .center) {
+            Ellipse()
+                .frame(width: 458, height: 420)
+                .padding(.trailing, -500)
+                .foregroundColor(lighterGray)
+                .padding(.top, -550)
             
-            Button("Back") {
-                deleteEvent = false
-            }
-            Text("Event Information: ")
+            Ellipse()
+                .frame(width: 510, height: 478)
+                .padding(.leading, -200)
+                .foregroundColor(lightGray)
+                .padding(.top, -590)
             
-            Text(event.title)
-            Text("Starts: \(event.startDate.formatted(date: .abbreviated, time: .standard))")
-            Text("Ends: \(event.endDate.formatted(date: .abbreviated, time: .standard))")
-            Button("Delete Event") {
-                Task {
-                    do {
-                        try await deleteEvent(event: event)
+            VStack (spacing: 20){
+                
+                
+                
+                Text(event.title).bold().padding().font(.system(size: 35)).foregroundColor(.black)
+                Text("Starts: \(event.startDate.formatted(date: .abbreviated, time: .shortened))").padding().font(.system(size: 18))
+                Text("Ends: \(event.endDate.formatted(date: .abbreviated, time: .shortened))").padding().font(.system(size: 18))
+                
+                HStack (spacing: 20) {
+                    Button("Back") {
+                        deleteEvent = false
                     }
-                    catch {
-                        print(error)
+                    .frame(width: 150, height: 75)
+                    .foregroundColor(.black) // 2
+                    .background(lighterGray) // 3
+                    .cornerRadius(10)
+                    .padding()
+                    
+                    
+                    Button("Delete Event") {
+                        Task {
+                            do {
+                                try await deleteEvent(event: event)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                        deleteEvent = false
                     }
+                    .frame(width: 150, height: 75)
+                    .foregroundColor(.black) // 2
+                    .background(lighterGray) // 3
+                    .cornerRadius(10)
+                    .padding()
                 }
-                deleteEvent = false
+                
             }
+            //.background(lightGray)
+            .cornerRadius(10)
+            .padding()
+            .frame(width: 350, height: 500)
         }
+        
     }
     func deleteEvent(event: Event) async {
         let calendarManager = await CalendarManager()
