@@ -1,12 +1,11 @@
-//
-//  ContentView.swift
-//  calendar_demo
-//
-//  Created by Molly Pate on 10/18/23.
-//
+// The main calender view file
 
 import SwiftUI
 
+/*
+    Containts the calendar page content - everything except the background
+    
+ */
 struct CalendarContentView: View {
     @State var selectedDate: Date = Date()
     @State var selectedIdx = 0
@@ -36,9 +35,13 @@ struct CalendarContentView: View {
     }
 }
 
+/*
+    The complete calendar view - with background
+ */
 struct CalendarView: View {
     var body: some View {
         ZStack (alignment: .center) {
+            // the circles
             ZStack {
                 Ellipse()
                     .frame(width: 458, height: 420)
@@ -53,12 +56,10 @@ struct CalendarView: View {
                     .padding(.top, -590)
             }
             .ignoresSafeArea()
+            // the calendar content
             CalendarContentView()
                 .padding(20)
         }
     }
 }
 
-//#Preview {
-//    CalendarView()
-//}

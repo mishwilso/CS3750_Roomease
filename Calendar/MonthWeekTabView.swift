@@ -1,12 +1,12 @@
-//
-//  MonthWeekTabView.swift
-//  test1
-//
-//  Created by Molly Pate on 10/18/23.
-//
+// This is a view within CalendarContent
 
 import SwiftUI
 
+/*
+    Oringally designed to have a month/week view, but the weekview was cut due to redundancy in the views
+    Now, this view provides just some additional formatting features
+    In the future, here is where we could add additional calendar views
+ */
 struct MonthWeekTabView: View {
     @Binding var selectedDate: Date
     @Binding var selectedIdx: Int
@@ -16,11 +16,6 @@ struct MonthWeekTabView: View {
                 .tabItem {
                     Label("Month", systemImage: "circle.fill")
                 }.tag(0)
-                
-//            WeekView(selectedDate: $selectedDate)
-//                .tabItem {
-//                    Label("Week", systemImage: "circle.fill")
-//                }.tag(1)
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

@@ -1,8 +1,4 @@
-//
-//  AddEvent.swift
-//  Roomease
-//
-//  Created by Molly Pate on 11/10/23.
+// This is the view found by clicking the "plus" button on the top right on the screen
 //
 
 import SwiftUI
@@ -13,13 +9,10 @@ struct AddEvent: View {
     @State private var startDate : Date = Date()
     @State private var endDate : Date = Date()
     @Binding var addEvent: Bool
-    //@StateObject var eventsFireViewModel = EventsFireViewModel()
 
-    
-    
-    //@State private var date: Date
     var body: some View {
         ZStack (alignment: .center) {
+            // background circles
             Ellipse()
                 .frame(width: 458, height: 420)
                 .padding(.trailing, -500)
@@ -32,6 +25,7 @@ struct AddEvent: View {
                 .foregroundColor(lightGray)
                 .padding(.top, -590)
             
+            // the add event form
             VStack (spacing: 20) {
                 Text("Add New Event").bold().padding().font(.system(size: 35)).foregroundColor(.black)
                 VStack (alignment: .center, spacing: 20){
@@ -71,22 +65,16 @@ struct AddEvent: View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .frame(width: 150, height: 75)
-                    .foregroundColor(.black) // 2
-                    .background(bttnColor) // 3
+                    .foregroundColor(.black)
+                    .background(bttnColor)
                     .cornerRadius(10)
                     .padding()
                     
                     Button("Add") {
-                        // save the information and go back to the calendar view
-        //                let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: date)
-        //                let startComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: startDate)
-        //                let endComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: endDate)
-                        
-
-                        // add event
-                        // TODO: hookup to firebase here!!
+                        // add event and leave view
                         Task {
                                 do {
+                                    // update the endDate if the user didn't touch it
                                     if endDate < startDate {
                                         endDate = startDate
                                     }
@@ -110,13 +98,11 @@ struct AddEvent: View {
                 }
             }
         }
-        
-        
-
-        
-        
     }
+    
+    // add a new event to firebase - interacts with the CalendarManager in CalendarViewModel
     func addEventToCal(title: String, startDate: Date, endDate: Date) async {
+        // get a calendar manager
         let calendarManager = await CalendarManager()
         
         let eventIds = calendarManager.eventIds
@@ -125,11 +111,12 @@ struct AddEvent: View {
             eventId = RandomIdGenerator.getBase62(length: 10)
         }
         
-        
+        // create a new event
         let event = Event(title: title, startDate: startDate, endDate: endDate, eventId: eventId)
-         await calendarManager.addEvent(event: event) { error in
+        // add it to firebase through the manager
+        await calendarManager.addEvent(event: event) { error in
             if let error = error {
-                // You can use this to catch errors, and print something on the screen to say the event wasn't added properly :)
+                // for testing
                 print("Error adding event: \(error.localizedDescription)")
             } else {
                 print("Event added successfully")
