@@ -1,6 +1,4 @@
 ## Chores functionality
-You are now able to create a custom room and add chores to it. 
-You can do this by selecting the 'create custom room' button at the end of the list of other rooms. 
-After hitting done, you will be taken back to the list of all rooms and you can scroll to see your new room!
+Watch this short demo:
 
-Navigation was also updated so that when you add a room or a chore and press 'Done', you will be brought back to the previous page. 
+<img src = https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjRvaWE4YjN1Nmp4czR6MWI1dTkwMnhiOWRzaW11c2g4aWZ2enFrYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cmlakXI3gzYqDAChuI/giphy.gif>
